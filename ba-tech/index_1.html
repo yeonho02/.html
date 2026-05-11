@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비에이텍 (Biatech) - AI Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="../styles.css"> <!-- Reusing global styles -->
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <!-- GNB -->
+    <header class="header scrolled" id="header" style="background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div class="container header-container">
+            <a href="../index.html" class="logo" style="color: var(--color-primary);">Biatech</a>
+            <nav class="gnb">
+                <a href="../index.html" class="gnb-link" style="color: var(--color-text-muted);">Home</a>
+                <a href="../corporate/index.html" class="gnb-link" style="color: var(--color-text-muted);">Corporate</a>
+                <a href="index.html" class="gnb-link" style="color: var(--color-primary); font-weight: 700;">Portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="portfolio-main">
+        <!-- Hero Section -->
+        <section class="portfolio-hero">
+            <div class="container text-center">
+                <h1 class="hero-title" style="color: var(--color-primary); font-size: 3rem; margin-bottom: 16px;">AI 스마트 워크 포트폴리오</h1>
+                <p class="hero-subtitle" style="color: var(--color-text-muted); font-size: 1.25rem;">생성형 AI 모델을 활용한 비에이텍의 혁신적인 업무 성과물을 소개합니다.</p>
+            </div>
+        </section>
+
+        <!-- 1. 작업 과정 전시 (Timeline) -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">AI 도입 및 활용 과정</h2>
+                    <p class="section-subtitle">각 단계별 사용된 생성형 AI 모델과 핵심 프롬프트를 확인하세요.</p>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Item 1: Gemini -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot gemini"></div>
+                        <div class="timeline-content">
+                            <span class="ai-badge gemini">Google Gemini 1.5 Pro</span>
+                            <h3>데이터 분석 및 전략 기획</h3>
+                            <p class="timeline-desc">초기 비즈니스 전략 수립을 위해 방대한 시장 데이터를 분석하고 인사이트를 도출했습니다.</p>
+                            <div class="prompt-box">
+                                <strong>💡 Core Prompt:</strong> "최근 3년간의 B2B 솔루션 시장 트렌드 데이터를 분석하고, 2026년 비에이텍이 진출할 수 있는 새로운 전략 3가지를 표 형태로 요약해줘."
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: Claude -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot claude"></div>
+                        <div class="timeline-content">
+                            <span class="ai-badge claude">Anthropic Claude 3 Opus</span>
+                            <h3>전문 보고서 및 카피라이팅 작성</h3>
+                            <p class="timeline-desc">복잡한 기술 문서를 이해하기 쉬운 브로슈어 카피로 변환하고, 공식 보고서의 초안을 작성했습니다.</p>
+                            <div class="prompt-box">
+                                <strong>💡 Core Prompt:</strong> "제공된 기술 사양서를 바탕으로, 비개발자 고객도 이해할 수 있는 매력적인 제품 소개서 카피를 5개 작성해줘. 톤앤매너는 신뢰감 있고 혁신적이어야 해."
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3: Image Generation AI -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot image-ai"></div>
+                        <div class="timeline-content">
+                            <span class="ai-badge image-ai">Image Generation AI</span>
+                            <h3>시각 자료 및 디자인 에셋 생성</h3>
+                            <p class="timeline-desc">웹사이트와 마케팅 자료에 사용될 고품질의 미래지향적 배경 이미지와 아이콘을 생성했습니다.</p>
+                            <div class="prompt-box">
+                                <strong>💡 Core Prompt:</strong> "A sleek, modern corporate product image showcasing an abstract software interface, deep blue and light silver tones, futuristic, high resolution."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 업무용 챗봇 가이드 요약 (NotebookLM Summary) -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">사내 업무용 챗봇 가이드 요약 (NotebookLM)</h2>
+                    <p class="section-subtitle">Corporate 페이지에 소개된 가이드 북의 핵심 내용입니다.</p>
+                </div>
+                <div class="notebook-summary">
+                    <div class="summary-card">
+                        <div class="summary-icon">📄</div>
+                        <h4>1. 지식 베이스 구축</h4>
+                        <p>사내 매뉴얼, 규정 등 PDF 문서를 간편하게 업로드하여 전용 지식 베이스를 생성합니다.</p>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">🔒</div>
+                        <h4>2. 소스 그라운딩</h4>
+                        <p>AI가 외부 데이터가 아닌 오직 사내 문서만을 참고하도록 설정하여 보안과 정확성을 높입니다.</p>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">💬</div>
+                        <h4>3. 즉각적인 업무 활용</h4>
+                        <p>자연어로 질문하고, 답변과 정확한 출처 페이지를 확인하여 정보 탐색 시간을 단축합니다.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4" style="margin-top: 48px;">
+                    <a href="../corporate/index.html" class="btn btn-outline" style="color: var(--color-primary); border-color: var(--color-primary);">Corporate 페이지에서 상세히 보기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 멀티미디어 그리드 (Gallery) -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">산출물 갤러리</h2>
+                    <p class="section-subtitle">카테고리별로 필터링하여 AI 기반 성과물을 확인하세요.</p>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">전체</button>
+                    <button class="filter-btn" data-filter="image">이미지</button>
+                    <button class="filter-btn" data-filter="video">영상</button>
+                    <button class="filter-btn" data-filter="audio">음악</button>
+                    <button class="filter-btn" data-filter="report">보고서 (PDF)</button>
+                    <button class="filter-btn" data-filter="news">카드 뉴스</button>
+                    <button class="filter-btn" data-filter="web">웹 페이지</button>
+                </div>
+                
+                <!-- Gallery Grid -->
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Item 1 -->
+                    <div class="gallery-item image" onclick="openModal('메인 히어로 이미지', 'image', 'portfolio_thumb.png', '웹사이트 메인 화면을 위해 AI 이미지 생성기로 제작된 미래지향적인 배경 이미지입니다. 딥 블루와 실버 톤을 사용하여 신뢰감을 줍니다.')">
+                        <img src="portfolio_thumb.png" alt="이미지">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">이미지</span>
+                            <h4>메인 히어로 이미지</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="gallery-item report" onclick="openModal('2026 시장 분석 보고서', 'report', null, 'Gemini 1.5 Pro를 활용해 작성된 2026년 B2B 솔루션 시장 동향 분석 리포트 초안입니다. 방대한 데이터를 10초 만에 분석하여 도출했습니다.')">
+                        <div class="gallery-placeholder report-icon">📄</div>
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">보고서 (PDF)</span>
+                            <h4>2026 시장 분석 보고서</h4>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="gallery-item video" onclick="openModal('기업 홍보 영상 (AI 편집)', 'video', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '텍스트-비디오 생성 AI와 자동 편집 스크립트를 활용하여 단 하루 만에 제작된 짧은 기업 소개 영상입니다.')">
+                        <div class="gallery-placeholder video-icon">▶️</div>
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">영상</span>
+                            <h4>기업 홍보 영상 (AI 편집)</h4>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="gallery-item news" onclick="openModal('소셜 미디어 카드 뉴스', 'news', 'portfolio_thumb.png', 'Claude 3 Opus의 카피라이팅과 이미지 제너레이터를 결합해 만든 인스타그램용 카드 뉴스 템플릿 1편입니다.')">
+                        <img src="portfolio_thumb.png" alt="카드 뉴스" style="filter: sepia(0.5) hue-rotate(-50deg);">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">카드 뉴스</span>
+                            <h4>소셜 미디어 카드 뉴스</h4>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="gallery-item audio" onclick="openModal('Corporate BGM', 'audio', null, '음악 생성 AI 모델을 사용해 제작된 차분하고 신뢰감 있는 기업용 배경음악 트랙입니다. 저작권 문제 없이 자유롭게 사용 가능합니다.')">
+                        <div class="gallery-placeholder audio-icon">🎵</div>
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">음악</span>
+                            <h4>Corporate BGM</h4>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="gallery-item web" onclick="openModal('사내 인트라넷 UI 시안', 'web', 'portfolio_thumb.png', 'AI 코딩 어시스턴트의 도움을 받아 설계된 사내 인트라넷 웹 페이지 프로토타입 디자인 캡처본입니다.')">
+                        <img src="portfolio_thumb.png" alt="웹 캡처" style="filter: hue-rotate(180deg) brightness(1.2);">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">웹 페이지</span>
+                            <h4>사내 인트라넷 UI 시안</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Window -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-media" id="modalMedia">
+                    <!-- Media content will be injected here via JS -->
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalTitle">제목</h3>
+                    <span id="modalCategory" class="badge">카테고리</span>
+                    <p id="modalDesc" class="mt-4">상세 설명이 이곳에 표시됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Biatech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Filtering and Modal -->
+    <script>
+        // --- Gallery Filtering Logic ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block';
+                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => { item.style.display = 'none'; }, 300);
+                    }
+                });
+            });
+        });
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('itemModal');
+        const modalMedia = document.getElementById('modalMedia');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalDesc = document.getElementById('modalDesc');
+
+        function openModal(title, category, mediaSrc, desc) {
+            modalTitle.innerText = title;
+            modalCategory.innerText = category.toUpperCase();
+            modalDesc.innerText = desc;
+            
+            // Clear previous media
+            modalMedia.innerHTML = '';
+
+            // Inject appropriate media
+            if (category === 'video' && mediaSrc) {
+                modalMedia.innerHTML = `<iframe width="100%" height="400" src="${mediaSrc}" frameborder="0" allowfullscreen></iframe>`;
+            } else if (mediaSrc) {
+                modalMedia.innerHTML = `<img src="${mediaSrc}" alt="${title}" style="width:100%; height:100%; object-fit:contain; background:#f0f4f8;">`;
+            } else {
+                // Fallback for audio/report if no direct visual
+                let icon = '📄';
+                if(category === 'audio') icon = '🎵';
+                modalMedia.innerHTML = `<div style="height:350px; width:100%; display:flex; align-items:center; justify-content:center; background:#f0f4f8; font-size:6rem; color:var(--color-primary);">${icon}</div>`;
+            }
+
+            modal.style.display = 'flex';
+            // Trigger animation
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modalMedia.innerHTML = ''; // Stop videos
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

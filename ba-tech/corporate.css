@@ -1,0 +1,365 @@
+/* Corporate Page Specific Styles */
+
+.corporate-main {
+    padding-top: var(--header-height);
+}
+
+.bg-light {
+    background-color: var(--color-bg-light);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* 1. Product Grid */
+.product-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.product-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.product-text {
+    flex: 1;
+}
+
+.product-text h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.product-text p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+}
+
+.product-image {
+    flex: 1;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(10, 37, 64, 0.1);
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.product-item:hover .product-image img {
+    transform: scale(1.03);
+}
+
+/* 2. Slider */
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(10, 37, 64, 0.08);
+    background: var(--color-white);
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slider-slide {
+    min-width: 100%;
+    padding: 80px 60px 100px; /* Extra bottom padding for dots */
+}
+
+.card-news {
+    text-align: center;
+}
+
+.card-news-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    opacity: 0.3;
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.card-news h4 {
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.card-news p {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 37, 64, 0.05);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    transition: background var(--transition-fast), color var(--transition-fast);
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.slider-btn.prev { left: 16px; }
+.slider-btn.next { right: 16px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(10, 37, 64, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.dot.active {
+    background-color: var(--color-primary);
+    transform: scale(1.3);
+}
+
+/* 3. PR Room */
+.pr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.pr-video-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.pr-video {
+    background: var(--color-bg-light);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.pr-video iframe {
+    display: block;
+}
+
+.pr-news {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.news-item {
+    background: var(--color-white);
+    padding: 24px 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    cursor: pointer;
+}
+
+.news-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 20px rgba(10, 37, 64, 0.08);
+    border-color: rgba(10, 37, 64, 0.1);
+}
+
+.news-date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.news-item h4 {
+    font-size: 1.125rem;
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+/* 4. Form */
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: 56px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(10, 37, 64, 0.08);
+}
+
+.form-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group.half {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid rgba(10, 37, 64, 0.15);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* 5. Audio Player Mini Bar */
+.audio-player {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: rgba(10, 37, 64, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    color: var(--color-white);
+    transition: transform var(--transition-normal);
+}
+
+.audio-player:hover {
+    transform: translateY(-5px);
+}
+
+.audio-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.audio-icon {
+    font-size: 1.25rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.audio-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.audio-btn {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.audio-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--color-white);
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+    .pr-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-item, .product-item.reverse {
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .form-container {
+        padding: 32px;
+    }
+    
+    .audio-player {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        justify-content: space-between;
+        border-radius: 24px;
+    }
+}
