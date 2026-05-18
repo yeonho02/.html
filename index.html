@@ -623,14 +623,16 @@
         /* ============================================
            BROCHURE SECTION
            ============================================ */
-        .brochure-grid {
+        .brochure-grid,
+        .campaign-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
             margin-top: 40px;
         }
 
-        .brochure-card {
+        .brochure-card,
+        .campaign-card {
             background: var(--color-white);
             border-radius: 24px;
             overflow: hidden;
@@ -643,10 +645,11 @@
             box-shadow: 0 22px 45px rgba(10, 37, 64, 0.12);
         }
 
-        .brochure-card img {
+        .brochure-card img,
+        .campaign-card img {
             width: 100%;
             height: auto;
-            max-height: 360px;
+            max-height: 520px;
             object-fit: contain;
             display: block;
             background: #F8FAFC;
@@ -1263,6 +1266,7 @@
                 <a href="#home" class="gnb-link">홈</a>
                 <a href="#portfolio" class="gnb-link">포트폴리오</a>
                 <a href="#brochure" class="gnb-link">브로슈어</a>
+                <a href="#campaign" class="gnb-link">물 활용 캠페인</a>
                 <a href="#corporate" class="gnb-link">기업소개</a>
                 <a href="#inquiry" class="gnb-link btn-inquiry">문의하기</a>
             </nav>
@@ -1432,6 +1436,46 @@
             </div>
         </section>
 
+        <!-- CAMPAIGN SECTION -->
+        <section id="campaign" class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">물 활용 캠페인</h2>
+                    <p class="section-subtitle">비에이텍과 함께하는 물 활용 캠페인 카드 뉴스를 한눈에 확인하세요.</p>
+                </div>
+                <div class="campaign-grid">
+                    <div class="campaign-card">
+                        <img src="BA1.png" alt="물 활용 캠페인 BA1">
+                        <div class="brochure-card-content">
+                            <h4>캠페인 BA1</h4>
+                            <p>물의 소중함을 알리는 메시지를 담아 제작한 첫 번째 캠페인 카드 뉴스입니다.</p>
+                        </div>
+                    </div>
+                    <div class="campaign-card">
+                        <img src="BA2.png" alt="물 활용 캠페인 BA2">
+                        <div class="brochure-card-content">
+                            <h4>캠페인 BA2</h4>
+                            <p>일상 속 물 절약 방법과 비에이텍의 솔루션을 소개하는 두 번째 캠페인 카드 뉴스입니다.</p>
+                        </div>
+                    </div>
+                    <div class="campaign-card">
+                        <img src="BA3.png" alt="물 활용 캠페인 BA3">
+                        <div class="brochure-card-content">
+                            <h4>캠페인 BA3</h4>
+                            <p>지속가능한 물 활용과 환경 보호 메시지를 강조한 세 번째 캠페인 카드 뉴스입니다.</p>
+                        </div>
+                    </div>
+                    <div class="campaign-card">
+                        <img src="BA4.png" alt="물 활용 캠페인 BA4">
+                        <div class="brochure-card-content">
+                            <h4>캠페인 BA4</h4>
+                            <p>비에이텍의 물관리 전문성을 담아 설계한 네 번째 캠페인 카드 뉴스입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- NotebookLM Summary Section -->
         <section class="section">
             <div class="container">
@@ -1475,7 +1519,6 @@
                     <button class="filter-btn" data-filter="audio">음악</button>
                     <button class="filter-btn" data-filter="report">보고서 (PDF)</button>
                     <button class="filter-btn" data-filter="news">카드 뉴스</button>
-                    <button class="filter-btn" data-filter="campaign">물 활용 캠페인</button>
                     <button class="filter-btn" data-filter="web">웹 페이지</button>
                 </div>
                 
@@ -1517,41 +1560,6 @@
                         </div>
                     </div>
 
-                    <!-- Item 5 - BA1 Campaign Card -->
-                    <div class="gallery-item campaign" onclick="openModal('물 활용 캠페인 BA1', 'campaign', 'BA1.png', '비에이텍과 함께하는 물 활용 캠페인 카드 뉴스 BA1입니다. 캠페인의 메시지를 시각적으로 전달합니다.')">
-                        <img src="BA1.png" alt="물 활용 캠페인 BA1">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">캠페인</span>
-                            <h4>물 활용 캠페인 BA1</h4>
-                        </div>
-                    </div>
-
-                    <!-- Item 6 - BA2 Campaign Card -->
-                    <div class="gallery-item campaign" onclick="openModal('물 활용 캠페인 BA2', 'campaign', 'BA2.png', '비에이텍과 함께하는 물 활용 캠페인 카드 뉴스 BA2입니다. 캠페인의 가치를 담았습니다.')">
-                        <img src="BA2.png" alt="물 활용 캠페인 BA2">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">캠페인</span>
-                            <h4>물 활용 캠페인 BA2</h4>
-                        </div>
-                    </div>
-
-                    <!-- Item 7 - BA3 Campaign Card -->
-                    <div class="gallery-item campaign" onclick="openModal('물 활용 캠페인 BA3', 'campaign', 'BA3.png', '비에이텍과 함께하는 물 활용 캠페인 카드 뉴스 BA3입니다. 지속가능한 물 활용 메시지를 전달합니다.')">
-                        <img src="BA3.png" alt="물 활용 캠페인 BA3">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">캠페인</span>
-                            <h4>물 활용 캠페인 BA3</h4>
-                        </div>
-                    </div>
-
-                    <!-- Item 8 - BA4 Campaign Card -->
-                    <div class="gallery-item campaign" onclick="openModal('물 활용 캠페인 BA4', 'campaign', 'BA4.png', '비에이텍과 함께하는 물 활용 캠페인 카드 뉴스 BA4입니다. 캠페인의 주요 메시지를 강조합니다.')">
-                        <img src="BA4.png" alt="물 활용 캠페인 BA4">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">캠페인</span>
-                            <h4>물 활용 캠페인 BA4</h4>
-                        </div>
-                    </div>
 
                     <!-- Item 9 -->
                     <div class="gallery-item audio" onclick="openModal('Corporate BGM', 'audio', null, '음악 생성 AI 모델을 사용해 제작된 차분하고 신뢰감 있는 기업용 배경음악 트랙입니다. 저작권 문제 없이 자유롭게 사용 가능합니다.')">
