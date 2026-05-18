@@ -621,6 +621,53 @@
         }
 
         /* ============================================
+           BROCHURE SECTION
+           ============================================ */
+        .brochure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            margin-top: 40px;
+        }
+
+        .brochure-card {
+            background: var(--color-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(10, 37, 64, 0.08);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .brochure-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 45px rgba(10, 37, 64, 0.12);
+        }
+
+        .brochure-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brochure-card-content {
+            padding: 24px;
+        }
+
+        .brochure-card-content h4 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .brochure-card-content p {
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* ============================================
            MODAL
            ============================================ */
         .modal {
@@ -1213,6 +1260,7 @@
             <nav class="gnb">
                 <a href="#home" class="gnb-link">홈</a>
                 <a href="#portfolio" class="gnb-link">포트폴리오</a>
+                <a href="#brochure" class="gnb-link">브로슈어</a>
                 <a href="#corporate" class="gnb-link">기업소개</a>
                 <a href="#inquiry" class="gnb-link btn-inquiry">문의하기</a>
             </nav>
@@ -1336,6 +1384,46 @@
                             <div class="prompt-box">
                                 <strong>💡 Core Prompt:</strong> "A sleek, modern corporate product image showcasing an abstract software interface, deep blue and light silver tones, futuristic, high resolution."
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BROCHURE SECTION -->
+        <section id="brochure" class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">브로슈어</h2>
+                    <p class="section-subtitle">첨부된 브로슈어 1~4 파일을 홈페이지에서 바로 확인하세요.</p>
+                </div>
+                <div class="brochure-grid">
+                    <div class="brochure-card">
+                        <img src="Brochure 1.png" alt="브로슈어 1">
+                        <div class="brochure-card-content">
+                            <h4>브로슈어 1</h4>
+                            <p>비에이텍의 대표 제품과 기술을 소개하는 첫 번째 브로슈어입니다.</p>
+                        </div>
+                    </div>
+                    <div class="brochure-card">
+                        <img src="Brochure 2.png" alt="브로슈어 2">
+                        <div class="brochure-card-content">
+                            <h4>브로슈어 2</h4>
+                            <p>워터펌프 설치와 유지보수 서비스를 상세히 보여주는 두 번째 브로슈어입니다.</p>
+                        </div>
+                    </div>
+                    <div class="brochure-card">
+                        <img src="Brochure 3.png" alt="브로슈어 3">
+                        <div class="brochure-card-content">
+                            <h4>브로슈어 3</h4>
+                            <p>AI 기반 솔루션과 기술 혁신 사례를 담은 세 번째 브로슈어입니다.</p>
+                        </div>
+                    </div>
+                    <div class="brochure-card">
+                        <img src="Brochure 4.png" alt="브로슈어 4">
+                        <div class="brochure-card-content">
+                            <h4>브로슈어 4</h4>
+                            <p>기업의 비전과 주요 성과를 담은 네 번째 브로슈어입니다.</p>
                         </div>
                     </div>
                 </div>
