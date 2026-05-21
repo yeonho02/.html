@@ -623,22 +623,44 @@
         /* ============================================
            BROCHURE SECTION
            ============================================ */
-        .brochure-grid,
+        .brochure-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            align-items: start;
+            justify-items: center;
+        }
+
         .campaign-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
             margin-top: 40px;
             align-items: start;
+            justify-items: center;
         }
 
-        .brochure-card,
+        .brochure-card {
+            background: var(--color-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(10, 37, 64, 0.08);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            width: 100%;
+            max-width: 170px;
+            margin: 0 auto;
+        }
+
         .campaign-card {
             background: var(--color-white);
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(10, 37, 64, 0.08);
             transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
         }
 
         .brochure-card:hover,
@@ -647,12 +669,31 @@
             box-shadow: 0 22px 45px rgba(10, 37, 64, 0.12);
         }
 
-        .brochure-card img,
         .campaign-card img {
             width: 100%;
-            height: 100%;
-            max-height: 420px;
-            object-fit: cover;
+            height: auto;
+            aspect-ratio: 768 / 1376;
+            object-fit: contain;
+            display: block;
+            background: #F8FAFC;
+        }
+
+        .brochure-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .brochure-card-content h4 {
+            font-size: 1.125rem;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .brochure-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 4;
+            object-fit: contain;
             display: block;
             background: #F8FAFC;
         }
@@ -1403,6 +1444,9 @@
                 </div>
                 <div class="brochure-grid">
                     <div class="brochure-card">
+                        <img src="Brochure 4.png" alt="브로슈어 4">
+                    </div>
+                    <div class="brochure-card">
                         <img src="Brochure 1.png" alt="브로슈어 1">
                     </div>
                     <div class="brochure-card">
@@ -1410,9 +1454,6 @@
                     </div>
                     <div class="brochure-card">
                         <img src="Brochure 3.png" alt="브로슈어 3">
-                    </div>
-                    <div class="brochure-card">
-                        <img src="Brochure 4.png" alt="브로슈어 4">
                     </div>
                 </div>
             </div>
@@ -1496,8 +1537,6 @@
                     <button class="filter-btn" data-filter="video">영상</button>
                     <button class="filter-btn" data-filter="audio">음악</button>
                     <button class="filter-btn" data-filter="report">보고서 (PDF)</button>
-                    <button class="filter-btn" data-filter="news">카드 뉴스</button>
-                    <button class="filter-btn" data-filter="web">웹 페이지</button>
                 </div>
                 
                 <!-- Gallery Grid -->
@@ -1529,31 +1568,12 @@
                         </div>
                     </div>
 
-                    <!-- Item 4 -->
-                    <div class="gallery-item news" onclick="openModal('소셜 미디어 카드 뉴스', 'news', 'portfolio_thumb.png', 'Claude 3 Opus의 카피라이팅과 이미지 제너레이터를 결합해 만든 인스타그램용 카드 뉴스 템플릿 1편입니다.')">
-                        <img src="portfolio_thumb.png" alt="카드 뉴스" style="filter: sepia(0.5) hue-rotate(-50deg);">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">카드 뉴스</span>
-                            <h4>소셜 미디어 카드 뉴스</h4>
-                        </div>
-                    </div>
-
-
                     <!-- Item 9 -->
                     <div class="gallery-item audio" onclick="openModal('Corporate BGM', 'audio', null, '음악 생성 AI 모델을 사용해 제작된 차분하고 신뢰감 있는 기업용 배경음악 트랙입니다. 저작권 문제 없이 자유롭게 사용 가능합니다.')">
                         <div class="gallery-placeholder audio-icon">🎵</div>
                         <div class="gallery-overlay">
                             <span class="gallery-category">음악</span>
                             <h4>Corporate BGM</h4>
-                        </div>
-                    </div>
-
-                    <!-- Item 10 -->
-                    <div class="gallery-item web" onclick="openModal('사내 인트라넷 UI 시안', 'web', 'portfolio_thumb.png', 'AI 코딩 어시스턴트의 도움을 받아 설계된 사내 인트라넷 웹 페이지 프로토타입 디자인 캡처본입니다.')">
-                        <img src="portfolio_thumb.png" alt="웹 캡처" style="filter: hue-rotate(180deg) brightness(1.2);">
-                        <div class="gallery-overlay">
-                            <span class="gallery-category">웹 페이지</span>
-                            <h4>사내 인트라넷 UI 시안</h4>
                         </div>
                     </div>
                 </div>
@@ -1654,7 +1674,11 @@
                     <!-- YouTube Embed & Brochure -->
                     <div class="pr-video-container">
                         <div class="pr-video">
-                            <iframe width="100%" height="300" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" title="Biatech Promo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <video width="100%" height="300" controls autoplay muted playsinline loop>
+                                <source src="바이오텍%20홍보영상.mov" type="video/mp4">
+                                <source src="바이오텍 홍보영상.mov">
+                                브라우저가 비디오 태그를 지원하지 않습니다.
+                            </video>
                         </div>
                         <div class="pr-brochure">
                             <a href="#" class="btn btn-primary btn-block">기업 브로슈어 다운로드 (.pdf)</a>
