@@ -1551,7 +1551,7 @@
                     </div>
                     
                     <!-- Item 2 -->
-                    <div class="gallery-item report" onclick="openModal('2026 시장 분석 보고서', 'report', null, 'Gemini 1.5 Pro를 활용해 작성된 2026년 B2B 솔루션 시장 동향 분석 리포트 초안입니다. 방대한 데이터를 10초 만에 분석하여 도출했습니다.')">
+                    <div class="gallery-item report" onclick="openModal('2026 시장 분석 보고서', 'report', '보고서.txt', 'Gemini 1.5 Pro를 활용해 작성된 2026년 B2B 솔루션 시장 동향 분석 리포트 초안입니다. 방대한 데이터를 10초 만에 분석하여 도출했습니다.')">
                         <div class="gallery-placeholder report-icon">📄</div>
                         <div class="gallery-overlay">
                             <span class="gallery-category">보고서 (PDF)</span>
@@ -1560,11 +1560,11 @@
                     </div>
 
                     <!-- Item 3 -->
-                    <div class="gallery-item video" onclick="openModal('기업 홍보 영상 (AI 편집)', 'video', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '텍스트-비디오 생성 AI와 자동 편집 스크립트를 활용하여 단 하루 만에 제작된 짧은 기업 소개 영상입니다.')">
+                    <div class="gallery-item video" onclick="openModal('비에이텍 10초 광고 영상', 'video', '바이오텍%20홍보영상.mov', '비에이텍의 브랜드 가치를 짧고 강렬하게 전달하는 10초 광고 영상입니다.')">
                         <div class="gallery-placeholder video-icon">▶️</div>
                         <div class="gallery-overlay">
                             <span class="gallery-category">영상</span>
-                            <h4>기업 홍보 영상 (AI 편집)</h4>
+                            <h4>비에이텍 10초 광고 영상</h4>
                         </div>
                     </div>
 
@@ -1862,7 +1862,13 @@
             modalMedia.innerHTML = '';
 
             if (category === 'video' && mediaSrc) {
-                modalMedia.innerHTML = `<iframe width="100%" height="400" src="${mediaSrc}" frameborder="0" allowfullscreen></iframe>`;
+                if (mediaSrc.includes('youtube.com') || mediaSrc.includes('youtu.be')) {
+                    modalMedia.innerHTML = `<iframe width="100%" height="400" src="${mediaSrc}" frameborder="0" allowfullscreen></iframe>`;
+                } else {
+                    modalMedia.innerHTML = `<video width="100%" height="400" controls autoplay><source src="${mediaSrc}" type="video/mp4"><source src="${decodeURIComponent(mediaSrc)}"></video>`;
+                }
+            } else if (category === 'report' && mediaSrc) {
+                modalMedia.innerHTML = `<iframe width="100%" height="400" src="${mediaSrc}" frameborder="0" style="background:#fff;"></iframe>`;
             } else if (mediaSrc) {
                 modalMedia.innerHTML = `<img src="${mediaSrc}" alt="${title}" style="width:100%; height:100%; object-fit:contain; background:#f0f4f8;">`;
             } else {
