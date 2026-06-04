@@ -223,6 +223,35 @@
             box-shadow: 0 4px 12px rgba(3, 169, 244, 0.4);
         }
 
+        .btn-login {
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: var(--color-white) !important;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-left: 10px;
+            font-weight: 700;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-login:hover {
+            background: var(--color-white);
+            color: var(--color-primary) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Scrolled states */
+        .header.scrolled .btn-login {
+            border-color: var(--color-primary);
+            color: var(--color-primary) !important;
+        }
+
+        .header.scrolled .btn-login:hover {
+            background: var(--color-primary);
+            color: var(--color-white) !important;
+        }
+
         /* ============================================
            HERO SECTION
            ============================================ */
@@ -373,6 +402,26 @@
             transform: translateY(-12px);
             box-shadow: 0 25px 50px rgba(0, 91, 150, 0.1);
             border-color: rgba(3, 169, 244, 0.2);
+        }
+
+        .card-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f4f8;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
         }
 
         .card-icon-wrapper {
@@ -1182,6 +1231,7 @@
         .audio-icon {
             font-size: 1.25rem;
             animation: bounce 2s infinite;
+            animation-play-state: paused;
         }
 
         @keyframes bounce {
@@ -1373,6 +1423,282 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ============================================
+           INTRANET SECTION
+           ============================================ */
+        .intranet-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        #intranet-login, #intranet-board {
+            display: none;
+        }
+        #intranet-login.active, #intranet-board.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .intranet-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 24px;
+        }
+        .intranet-tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s ease;
+        }
+        .intranet-tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+        #intranet-board-list, #intranet-post-detail {
+            display: none;
+        }
+        #intranet-board-list.active, #intranet-post-detail.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .board-header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-profile-summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+        .profile-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-primary);
+        }
+        .profile-btn {
+            background: #fff;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .profile-btn:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+        #intranet-profile-edit {
+            display: none;
+        }
+        #intranet-profile-edit.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        .profile-edit-container {
+            background: var(--color-white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .profile-preview-wrapper {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f9fa;
+            margin: 0 auto;
+        }
+        .profile-preview-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: flex-end;
+        }
+        .post-action-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-fast);
+        }
+        .post-action-btn.edit {
+            background: #f39c12;
+            color: #fff;
+        }
+        .post-action-btn.edit:hover { background: #d35400; }
+        .post-action-btn.delete {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .post-action-btn.delete:hover { background: #c0392b; }
+        .comment-actions {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+        }
+        .comment-action-btn {
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 0;
+            text-decoration: underline;
+        }
+        .comment-action-btn:hover {
+            color: var(--color-secondary);
+        }
+        .comment-item.private {
+            background: #f5f6f7;
+            border-left: 4px solid #95a5a6;
+            opacity: 0.85;
+        }
+        .comment-private-badge {
+            display: inline-block;
+            background: #7f8c8d;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 6px;
+            font-weight: bold;
+        }
+        .board-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+        }
+        .board-item {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .board-item:hover {
+            background: #f8fafc;
+        }
+        .board-item-title {
+            font-weight: 600;
+            color: var(--color-text-main);
+            margin-bottom: 4px;
+        }
+        .board-item-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        .board-form {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+        /* Detail View Styles */
+        .post-detail-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+        .post-detail-title {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .post-detail-meta {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        .post-detail-content {
+            min-height: 150px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            white-space: pre-wrap;
+        }
+        .comments-section {
+            border-top: 1px solid #eee;
+            padding-top: 24px;
+        }
+        .comment-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .comment-reply {
+            margin-left: 40px;
+            border-left: 3px solid var(--color-primary);
+            background: #fff;
+            border: 1px solid #eee;
+            border-left-width: 3px;
+        }
+        .comment-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .comment-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .reply-btn {
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 0;
+        }
+        .logout-btn, .back-btn {
+            background: transparent;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover, .back-btn:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -1428,6 +1754,7 @@
                 </div>
                 
                 <a href="#inquiry" class="gnb-link btn-inquiry">문의하기</a>
+                <a href="#intranet" class="gnb-link btn-login">로그인</a>
             </nav>
         </div>
     </header>
@@ -1622,21 +1949,27 @@
                     </div>
                     <div class="cards-grid">
                         <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div style="height: 200px; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">⚙️</div>
+                            <div class="card-img-wrapper">
+                                <img src="고효율%20다단%20원심펌프%20이미지.png" alt="고효율 다단 원심펌프" class="card-img">
+                            </div>
                             <div style="padding: 24px;">
                                 <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">고효율 다단 원심펌프</h3>
                                 <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">안정적인 유량과 강력한 고압 송출을 보증하여 아파트 급수 및 공장 냉각수 순환에 최적화된 다단식 펌프입니다.</p>
                             </div>
                         </div>
                         <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div style="height: 200px; background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🎛️</div>
+                            <div class="card-img-wrapper">
+                                <img src="스마트%20인버터%20부스터%20펌프%20이미지.png" alt="스마트 인버터 부스터 펌프" class="card-img">
+                            </div>
                             <div style="padding: 24px;">
                                 <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">스마트 인버터 부스터 펌프</h3>
                                 <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">사용량에 따라 실시간으로 주파수를 제어하여 전기 요금을 획기적으로 낮추고 이상 압력을 제어하는 스마트 부스터 시스템입니다.</p>
                             </div>
                         </div>
                         <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div style="height: 200px; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;">💧</div>
+                            <div class="card-img-wrapper">
+                                <img src="지능형%20심우물%20수중펌프%20이미지.png" alt="지능형 심우물 수중펌프" class="card-img">
+                            </div>
                             <div style="padding: 24px;">
                                 <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">지능형 심우물 수중펌프</h3>
                                 <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">깊은 대수층의 지하수를 끌어올리며 모터 과부하 및 이상 진동 감지용 IoT 단말이 결합된 친환경 펌프입니다.</p>
@@ -2008,6 +2341,140 @@
                 </div>
             </div>
         </section>
+
+        <!-- ============================================
+             SECTION 5: INTRANET
+             ============================================ -->
+        <section id="intranet" class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">사내 인트라넷</h2>
+                    <p class="section-subtitle">임직원 전용 공간입니다. 인가된 계정으로 로그인해 주세요.</p>
+                </div>
+                
+                <div class="intranet-container">
+                    <!-- Login Form -->
+                    <div id="intranet-login" class="active">
+                        <form onsubmit="handleLogin(event)" class="inquiry-form" style="max-width: 400px; margin: 0 auto;">
+                            <div class="form-group">
+                                <label for="login-id">아이디</label>
+                                <input type="text" id="login-id" placeholder="아이디 입력" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-pw">비밀번호</label>
+                                <input type="password" id="login-pw" placeholder="비밀번호 입력" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">로그인</button>
+                            <p id="login-error" style="color: #e74c3c; margin-top: 10px; text-align: center; display: none;">아이디 또는 비밀번호가 일치하지 않습니다.</p>
+                        </form>
+                    </div>
+
+                    <!-- Board Section -->
+                    <div id="intranet-board">
+                        <div class="board-header">
+                            <h3>📋 사내 게시판</h3>
+                            <div class="board-header-right">
+                                <div class="user-profile-summary" id="userProfileSummary"></div>
+                                <button onclick="showProfileEdit()" class="profile-btn">내 프로필</button>
+                                <button onclick="handleLogout()" class="logout-btn">로그아웃</button>
+                            </div>
+                        </div>
+                        
+                        <div class="intranet-tabs">
+                            <div class="intranet-tab active" onclick="switchBoard('notice', this)">사내 공지</div>
+                            <div class="intranet-tab" onclick="switchBoard('free', this)">자유게시판</div>
+                            <div class="intranet-tab" onclick="switchBoard('anon', this)">익명게시판</div>
+                        </div>
+
+                        <!-- Board List View -->
+                        <div id="intranet-board-list" class="active">
+                            <ul class="board-list" id="board-list">
+                                <!-- Posts will be rendered here -->
+                            </ul>
+                            
+                            <div class="board-form">
+                                <h4 style="margin-bottom: 16px;">새 글 작성하기</h4>
+                                <form onsubmit="handlePostSubmit(event)" class="inquiry-form">
+                                    <div class="form-group">
+                                        <input type="text" id="post-title" placeholder="글 제목을 입력하세요" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="post-content" rows="3" placeholder="내용을 입력하세요" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">등록하기</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Post Detail View -->
+                        <div id="intranet-post-detail">
+                            <button onclick="backToList()" class="back-btn" style="margin-bottom:16px;">← 목록으로</button>
+                            <div class="post-detail-header">
+                                <h3 id="detail-title" class="post-detail-title"></h3>
+                                <div class="post-detail-meta" id="detail-meta"></div>
+                                <div class="post-actions" id="postActions"></div>
+                            </div>
+                            <div id="detail-content" class="post-detail-content"></div>
+                            <div id="detail-edit-form" style="display: none; margin-top: 16px; margin-bottom: 24px;">
+                                <form onsubmit="handlePostUpdate(event)" class="inquiry-form">
+                                    <div class="form-group">
+                                        <input type="text" id="edit-post-title" required style="font-weight: bold;">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="edit-post-content" rows="6" required></textarea>
+                                    </div>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button type="submit" class="btn btn-primary">저장</button>
+                                        <button type="button" onclick="cancelPostEdit()" class="btn" style="border: 1px solid #ccc; background: #fff; color: #333;">취소</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="comments-section">
+                                <h4>댓글</h4>
+                                <div id="comments-list" style="margin-top:16px;"></div>
+                                
+                                <form onsubmit="handleCommentSubmit(event)" class="inquiry-form" style="margin-top:24px;">
+                                    <div class="form-group">
+                                        <textarea id="comment-content" rows="2" placeholder="댓글을 입력하세요" required></textarea>
+                                    </div>
+                                    <input type="hidden" id="reply-parent-id" value="">
+                                    <div id="reply-indicator" style="display:none; margin-bottom:8px; color:var(--color-primary); font-size:0.9rem;"></div>
+                                    <button type="submit" class="btn btn-primary" style="padding: 8px 16px;">댓글 등록</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Profile Edit View -->
+                        <div id="intranet-profile-edit">
+                            <button onclick="backToList()" class="back-btn" style="margin-bottom:16px;">← 목록으로</button>
+                            <div class="profile-edit-container">
+                                <h4>👤 내 프로필 수정</h4>
+                                <form onsubmit="handleProfileSave(event)" class="inquiry-form" style="margin-top:20px;">
+                                    <div class="form-group" style="text-align: center;">
+                                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">프로필 사진</label>
+                                        <div class="profile-preview-wrapper" style="margin: 15px auto;">
+                                            <img id="profile-preview-img" src="" alt="프로필 사진" class="profile-preview-avatar">
+                                        </div>
+                                        <input type="file" id="profile-image-file" accept="image/*" onchange="previewProfileImage(event)" style="display: none;">
+                                        <button type="button" onclick="document.getElementById('profile-image-file').click()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 16px; border-radius: 4px;">사진 변경</button>
+                                        <button type="button" onclick="resetProfileImage()" class="btn" style="font-size: 0.85rem; padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: #fff; color: #333; margin-left: 8px;">기본 이미지로</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-nickname" style="font-weight: bold;">닉네임</label>
+                                        <input type="text" id="profile-nickname" placeholder="닉네임 입력" required>
+                                    </div>
+                                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                                        <button type="submit" class="btn btn-primary" style="flex: 1;">저장하기</button>
+                                        <button type="button" onclick="backToList()" class="btn" style="flex: 1; border: 1px solid #ccc; background: #fff; color: #333;">취소</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Modal Window -->
@@ -2026,16 +2493,16 @@
     </div>
 
     <!-- Audio Player Mini Bar -->
-    <div class="audio-player">
+    <div class="audio-player" id="audioPlayerBar" style="cursor: pointer;">
         <div class="audio-info">
             <span class="audio-icon">🎵</span>
-            <span class="audio-title">Biatech Corporate BGM</span>
+            <span class="audio-title">배경음악</span>
         </div>
         <div class="audio-controls">
-            <audio id="bgm" loop>
-                <source src="data:audio/mp3;base64,//NExAAAAANIAAAAAExBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" type="audio/mpeg">
+            <audio id="bgm" loop autoplay>
+                <source src="비에이텍%20물길.mp3" type="audio/mpeg">
             </audio>
-            <button id="playPauseBtn" class="audio-btn">▶ Play</button>
+            <button id="playPauseBtn" class="audio-btn">play</button>
         </div>
     </div>
 
@@ -2200,22 +2667,608 @@
         // ============================================
         const bgm = document.getElementById('bgm');
         const playPauseBtn = document.getElementById('playPauseBtn');
-        let isPlaying = false;
+        const audioPlayerBar = document.getElementById('audioPlayerBar');
+        const audioIcon = document.querySelector('.audio-icon');
 
-        playPauseBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                bgm.pause();
-                playPauseBtn.innerHTML = '▶ Play';
-                document.querySelector('.audio-icon').style.animationPlayState = 'paused';
-            } else {
-                bgm.play().catch(e => console.log('Audio play failed: ', e));
-                playPauseBtn.innerHTML = '⏸ Pause';
-                document.querySelector('.audio-icon').style.animationPlayState = 'running';
+        // Ensure loop property is active
+        bgm.loop = true;
+
+        // Sync UI with audio events
+        bgm.addEventListener('play', () => {
+            playPauseBtn.innerHTML = 'pause';
+            if (audioIcon) {
+                audioIcon.style.animationPlayState = 'running';
             }
-            isPlaying = !isPlaying;
+            removeInteractionListeners();
         });
 
-        document.querySelector('.audio-icon').style.animationPlayState = 'paused';
+        bgm.addEventListener('pause', () => {
+            playPauseBtn.innerHTML = 'play';
+            if (audioIcon) {
+                audioIcon.style.animationPlayState = 'paused';
+            }
+        });
+
+        // Toggle play/pause function
+        function togglePlay() {
+            if (bgm.paused) {
+                bgm.play().catch(e => console.log('Audio play failed: ', e));
+            } else {
+                bgm.pause();
+            }
+        }
+
+        // Toggle play/pause when clicking the entire player bar
+        if (audioPlayerBar) {
+            audioPlayerBar.addEventListener('click', () => {
+                togglePlay();
+            });
+        }
+
+        // Prevent double toggling when clicking the button directly
+        playPauseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlay();
+        });
+
+        // Play on user interaction fallback for autoplay policies
+        const playOnInteraction = () => {
+            if (bgm.paused) {
+                bgm.play().then(() => {
+                    removeInteractionListeners();
+                }).catch(e => console.log('Interaction play attempt: success'));
+            } else {
+                removeInteractionListeners();
+            }
+        };
+
+        const interactionEvents = ['click', 'touchstart', 'keydown', 'mousedown'];
+        function addInteractionListeners() {
+            interactionEvents.forEach(event => {
+                document.addEventListener(event, playOnInteraction, { once: true });
+            });
+        }
+        function removeInteractionListeners() {
+            interactionEvents.forEach(event => {
+                document.removeEventListener(event, playOnInteraction);
+            });
+        }
+
+        // Setup interaction fallback
+        addInteractionListeners();
+
+        // ============================================
+        // INTRANET LOGIC
+        // ============================================
+        const ACCOUNTS = {
+            'admin': 'admin123!',
+            'staff01': 'pass01',
+            'staff02': 'pass02',
+            'staff03': 'pass03',
+            'staff04': 'pass04'
+        };
+
+        const loginSection = document.getElementById('intranet-login');
+        const boardSection = document.getElementById('intranet-board');
+        const loginError = document.getElementById('login-error');
+        const boardListUI = document.getElementById('intranet-board-list');
+        const postDetailUI = document.getElementById('intranet-post-detail');
+        const boardList = document.getElementById('board-list');
+        const commentsList = document.getElementById('comments-list');
+        
+        // Profile Elements & Settings
+        const profileSection = document.getElementById('intranet-profile-edit');
+        const userProfileSummary = document.getElementById('userProfileSummary');
+        const profilePreviewImg = document.getElementById('profile-preview-img');
+        const profileNicknameInput = document.getElementById('profile-nickname');
+        const profileFileInput = document.getElementById('profile-image-file');
+        
+        const DEFAULT_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzk1YTVhNiI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00cy0xLjc5LTQtNC00LTQgMS43OS00IDQgMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYzAtMi42Ni01LjMzLTQtOC00eiIvPjwvc3ZnPg==';
+        let tempAvatarData = null;
+        
+        let currentBoard = 'notice'; // notice, free, anon
+        let currentPostId = null;
+
+        function checkLoginState() {
+            if(!loginSection || !boardSection) return;
+            const loggedInUser = localStorage.getItem('intranet_user');
+            if (loggedInUser) {
+                loginSection.classList.remove('active');
+                boardSection.classList.add('active');
+                initData();
+                renderProfileSummary(loggedInUser);
+                switchBoard(currentBoard);
+            } else {
+                loginSection.classList.add('active');
+                boardSection.classList.remove('active');
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const id = document.getElementById('login-id').value.trim();
+            const pw = document.getElementById('login-pw').value;
+
+            if (ACCOUNTS[id] && ACCOUNTS[id] === pw) {
+                localStorage.setItem('intranet_user', id);
+                loginError.style.display = 'none';
+                document.getElementById('login-id').value = '';
+                document.getElementById('login-pw').value = '';
+                checkLoginState();
+            } else {
+                loginError.style.display = 'block';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('intranet_user');
+            checkLoginState();
+        }
+
+        function initData() {
+            if(!localStorage.getItem('intranet_data_v2')) {
+                // Initialize new structure
+                const initialData = [
+                    { id: 1, type: 'notice', title: '환영합니다! 사내 인트라넷이 오픈되었습니다.', content: '비에이텍 임직원 여러분, 사내 공지 및 자유게시판으로 활용될 인트라넷입니다.', author: 'admin', date: new Date().toLocaleDateString(), comments: [] }
+                ];
+                localStorage.setItem('intranet_data_v2', JSON.stringify(initialData));
+            }
+        }
+
+        function getPosts() {
+            const data = localStorage.getItem('intranet_data_v2');
+            return data ? JSON.parse(data) : [];
+        }
+
+        function savePosts(posts) {
+            localStorage.setItem('intranet_data_v2', JSON.stringify(posts));
+        }
+
+        // ============================================
+        // PROFILE HELPERS & EVENT HANDLERS
+        // ============================================
+        function renderProfileSummary(userId) {
+            if (!userProfileSummary) return;
+            const profile = getProfile(userId);
+            userProfileSummary.innerHTML = `
+                <img src="${profile.avatar}" class="profile-avatar" alt="Avatar">
+                <span>${profile.nickname}</span>
+            `;
+        }
+
+        function getProfile(userId) {
+            let profiles = {};
+            try {
+                const stored = localStorage.getItem('intranet_profiles_v2');
+                if (stored) profiles = JSON.parse(stored);
+            } catch(e) {}
+            
+            if (!profiles[userId]) {
+                profiles[userId] = {
+                    nickname: userId,
+                    avatar: DEFAULT_AVATAR
+                };
+            }
+            return profiles[userId];
+        }
+
+        function saveProfile(userId, profileData) {
+            let profiles = {};
+            try {
+                const stored = localStorage.getItem('intranet_profiles_v2');
+                if (stored) profiles = JSON.parse(stored);
+            } catch(e) {}
+            
+            profiles[userId] = profileData;
+            localStorage.setItem('intranet_profiles_v2', JSON.stringify(profiles));
+        }
+
+        function showProfileEdit() {
+            const userId = localStorage.getItem('intranet_user');
+            if (!userId) return;
+            
+            const profile = getProfile(userId);
+            tempAvatarData = profile.avatar;
+            profilePreviewImg.src = profile.avatar;
+            profileNicknameInput.value = profile.nickname;
+            profileFileInput.value = '';
+            
+            boardListUI.classList.remove('active');
+            postDetailUI.classList.remove('active');
+            if (profileSection) profileSection.classList.add('active');
+        }
+
+        function previewProfileImage(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const max_size = 120;
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > height) {
+                        if (width > max_size) {
+                            height *= max_size / width;
+                            width = max_size;
+                        }
+                    } else {
+                        if (height > max_size) {
+                            width *= max_size / height;
+                            height = max_size;
+                        }
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    tempAvatarData = canvas.toDataURL('image/jpeg', 0.7);
+                    profilePreviewImg.src = tempAvatarData;
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetProfileImage() {
+            tempAvatarData = DEFAULT_AVATAR;
+            profilePreviewImg.src = DEFAULT_AVATAR;
+            profileFileInput.value = '';
+        }
+
+        function handleProfileSave(e) {
+            e.preventDefault();
+            const userId = localStorage.getItem('intranet_user');
+            if (!userId) return;
+            
+            const newNickname = profileNicknameInput.value.trim();
+            if (!newNickname) return;
+            
+            saveProfile(userId, {
+                nickname: newNickname,
+                avatar: tempAvatarData || DEFAULT_AVATAR
+            });
+            
+            renderProfileSummary(userId);
+            renderBoardList();
+            backToList();
+        }
+
+        function switchBoard(type, element) {
+            currentBoard = type;
+            // Update tabs UI
+            document.querySelectorAll('.intranet-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            if (element) {
+                element.classList.add('active');
+            } else {
+                // Fallback: activate tab based on the type
+                const tabs = document.querySelectorAll('.intranet-tab');
+                if (type === 'notice' && tabs[0]) tabs[0].classList.add('active');
+                if (type === 'free' && tabs[1]) tabs[1].classList.add('active');
+                if (type === 'anon' && tabs[2]) tabs[2].classList.add('active');
+            }
+            
+            backToList();
+            renderBoardList();
+        }
+
+        function backToList() {
+            postDetailUI.classList.remove('active');
+            if (profileSection) profileSection.classList.remove('active');
+            boardListUI.classList.add('active');
+            currentPostId = null;
+            cancelPostEdit();
+        }
+
+        function renderBoardList() {
+            if(!boardList) return;
+            const posts = getPosts().filter(p => p.type === currentBoard);
+            boardList.innerHTML = '';
+            
+            if (posts.length === 0) {
+                boardList.innerHTML = '<li class="board-item"><p style="color:#999; text-align:center; width:100%;">등록된 게시글이 없습니다.</p></li>';
+                return;
+            }
+
+            posts.slice().reverse().forEach(post => {
+                const profile = getProfile(post.author);
+                const li = document.createElement('li');
+                li.className = 'board-item';
+                li.onclick = () => viewPost(post.id);
+                li.innerHTML = `
+                    <div>
+                        <div class="board-item-title">${post.title}</div>
+                        <div class="board-item-meta">작성자: <strong>${profile.nickname}</strong> | 작성일: ${post.date}</div>
+                    </div>
+                `;
+                boardList.appendChild(li);
+            });
+        }
+
+        function viewPost(postId) {
+            const post = getPosts().find(p => p.id === postId);
+            if(!post) return;
+            currentPostId = postId;
+            
+            const profile = getProfile(post.author);
+            
+            document.getElementById('detail-title').innerText = post.title;
+            document.getElementById('detail-meta').innerHTML = `작성자: <strong>${profile.nickname}</strong> | 작성일: ${post.date}`;
+            document.getElementById('detail-content').innerText = post.content || '';
+            
+            renderPostActions(post);
+            
+            cancelReply(); // Reset comment form
+            renderComments(post.comments || []);
+
+            boardListUI.classList.remove('active');
+            postDetailUI.classList.add('active');
+        }
+
+        // ============================================
+        // POST PERMISSION ACTIONS (EDIT & DELETE)
+        // ============================================
+        function renderPostActions(post) {
+            const postActions = document.getElementById('postActions');
+            if (!postActions) return;
+            postActions.innerHTML = '';
+            
+            const currentUser = localStorage.getItem('intranet_user');
+            if (!currentUser) return;
+            
+            const isAuthor = post.author === currentUser;
+            const isAdmin = currentUser === 'admin';
+            
+            if (isAuthor) {
+                postActions.innerHTML = `
+                    <button onclick="startPostEdit()" class="post-action-btn edit">수정</button>
+                    <button onclick="handlePostDelete()" class="post-action-btn delete">삭제</button>
+                `;
+            } else if (isAdmin) {
+                postActions.innerHTML = `
+                    <button onclick="handlePostDelete()" class="post-action-btn delete">관리자 삭제</button>
+                `;
+            }
+        }
+
+        function startPostEdit() {
+            const post = getPosts().find(p => p.id === currentPostId);
+            if (!post) return;
+            
+            document.getElementById('detail-content').style.display = 'none';
+            document.getElementById('postActions').style.display = 'none';
+            
+            const editForm = document.getElementById('detail-edit-form');
+            editForm.style.display = 'block';
+            
+            document.getElementById('edit-post-title').value = post.title;
+            document.getElementById('edit-post-content').value = post.content || '';
+        }
+
+        function cancelPostEdit() {
+            const editForm = document.getElementById('detail-edit-form');
+            if (editForm) editForm.style.display = 'none';
+            
+            const detailContent = document.getElementById('detail-content');
+            if (detailContent) detailContent.style.display = 'block';
+            
+            const postActions = document.getElementById('postActions');
+            if (postActions) postActions.style.display = 'flex';
+        }
+
+        function handlePostUpdate(e) {
+            e.preventDefault();
+            const posts = getPosts();
+            const postIndex = posts.findIndex(p => p.id === currentPostId);
+            if (postIndex === -1) return;
+            
+            const newTitle = document.getElementById('edit-post-title').value.trim();
+            const newContent = document.getElementById('edit-post-content').value.trim();
+            
+            if (!newTitle || !newContent) return;
+            
+            posts[postIndex].title = newTitle;
+            posts[postIndex].content = newContent;
+            
+            savePosts(posts);
+            
+            // Refresh detailed view & board list
+            viewPost(currentPostId);
+            renderBoardList();
+            cancelPostEdit();
+        }
+
+        function handlePostDelete() {
+            if (!confirm('정말로 이 게시글을 삭제하시겠습니까?')) return;
+            
+            const posts = getPosts();
+            const filtered = posts.filter(p => p.id !== currentPostId);
+            savePosts(filtered);
+            
+            renderBoardList();
+            backToList();
+        }
+
+        function handlePostSubmit(e) {
+            e.preventDefault();
+            const titleInput = document.getElementById('post-title');
+            const contentInput = document.getElementById('post-content');
+            
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            let author = localStorage.getItem('intranet_user') || '알 수 없음';
+            if(currentBoard === 'anon') author = '익명';
+            
+            const date = new Date().toLocaleDateString();
+
+            if (!title || !content) return;
+
+            const posts = getPosts();
+            posts.push({
+                id: Date.now(),
+                type: currentBoard,
+                title: title,
+                content: content,
+                author: author,
+                date: date,
+                comments: []
+            });
+
+            savePosts(posts);
+            titleInput.value = '';
+            contentInput.value = '';
+            renderBoardList();
+        }
+
+        // Comment System
+        function renderComments(comments) {
+            commentsList.innerHTML = '';
+            if(comments.length === 0) {
+                commentsList.innerHTML = '<p style="color:#999; font-size:0.9rem;">첫 댓글을 남겨보세요.</p>';
+                return;
+            }
+
+            const currentUser = localStorage.getItem('intranet_user');
+            const isAdmin = currentUser === 'admin';
+
+            // Separate parents and replies
+            const parents = comments.filter(c => !c.parentId);
+            const replies = comments.filter(c => c.parentId);
+
+            parents.forEach(parent => {
+                // Render parent
+                commentsList.appendChild(createCommentElement(parent, false, isAdmin));
+                // Render its replies
+                replies.filter(r => r.parentId === parent.id).forEach(reply => {
+                    commentsList.appendChild(createCommentElement(reply, true, isAdmin));
+                });
+            });
+        }
+
+        function createCommentElement(comment, isReply, isAdmin) {
+            const profile = getProfile(comment.author);
+            const div = document.createElement('div');
+            
+            const isPrivate = comment.isPrivate === true;
+            
+            let classNames = isReply ? 'comment-item comment-reply' : 'comment-item';
+            if (isPrivate) {
+                classNames += ' private';
+            }
+            div.className = classNames;
+            
+            let displayContent = comment.content;
+            let showReplyBtn = !isReply;
+            
+            if (isPrivate) {
+                if (isAdmin) {
+                    displayContent = `<span class="comment-private-badge">🔒 비공개</span> ${comment.content}`;
+                } else {
+                    displayContent = '🔒 비공개 댓글입니다.';
+                    showReplyBtn = false;
+                }
+            }
+            
+            let contentHTML = `<div class="comment-content">${displayContent}</div>`;
+            
+            let actionsHTML = '';
+            if (!isPrivate && showReplyBtn) {
+                actionsHTML += `<button class="reply-btn" onclick="prepareReply(${comment.id}, '${profile.nickname}')">↳ 답글 달기</button>`;
+            }
+            
+            if (isAdmin) {
+                const toggleText = isPrivate ? '공개로 전환' : '비공개로 전환';
+                actionsHTML += `
+                    <div class="comment-actions">
+                        <button class="comment-action-btn" onclick="toggleCommentPrivacy(${comment.id})">${toggleText}</button>
+                    </div>
+                `;
+            }
+            
+            div.innerHTML = `
+                <div class="comment-meta">
+                    <img src="${profile.avatar}" class="profile-avatar" style="width: 20px; height: 20px; border: 1px solid #ccc;" alt="Avatar">
+                    <strong>${profile.nickname}</strong>
+                    <span>${comment.date}</span>
+                </div>
+                ${contentHTML}
+                ${actionsHTML}
+            `;
+            return div;
+        }
+
+        function prepareReply(parentId, parentAuthor) {
+            document.getElementById('reply-parent-id').value = parentId;
+            const indicator = document.getElementById('reply-indicator');
+            if (indicator) {
+                indicator.style.display = 'block';
+                indicator.innerHTML = `<strong>${parentAuthor}</strong>님에게 답글 작성 중 <button type="button" style="background:none;border:none;color:#999;cursor:pointer;margin-left:8px;" onclick="cancelReply()">✕ 취소</button>`;
+            }
+            document.getElementById('comment-content').focus();
+        }
+
+        function cancelReply() {
+            document.getElementById('reply-parent-id').value = '';
+            const indicator = document.getElementById('reply-indicator');
+            if (indicator) indicator.style.display = 'none';
+        }
+
+        function toggleCommentPrivacy(commentId) {
+            const posts = getPosts();
+            const postIndex = posts.findIndex(p => p.id === currentPostId);
+            if (postIndex === -1) return;
+            
+            const comments = posts[postIndex].comments || [];
+            const commentIndex = comments.findIndex(c => c.id === commentId);
+            if (commentIndex === -1) return;
+            
+            comments[commentIndex].isPrivate = !comments[commentIndex].isPrivate;
+            
+            savePosts(posts);
+            renderComments(comments);
+        }
+
+        function handleCommentSubmit(e) {
+            e.preventDefault();
+            const contentInput = document.getElementById('comment-content');
+            const parentIdInput = document.getElementById('reply-parent-id');
+            const content = contentInput.value.trim();
+            if(!content) return;
+
+            let author = localStorage.getItem('intranet_user') || '알 수 없음';
+            if(currentBoard === 'anon') author = '익명';
+
+            const posts = getPosts();
+            const postIndex = posts.findIndex(p => p.id === currentPostId);
+            if(postIndex === -1) return;
+
+            if(!posts[postIndex].comments) posts[postIndex].comments = [];
+            
+            posts[postIndex].comments.push({
+                id: Date.now(),
+                parentId: parentIdInput.value ? parseInt(parentIdInput.value) : null,
+                author: author,
+                content: content,
+                date: new Date().toLocaleString(),
+                isPrivate: false
+            });
+
+            savePosts(posts);
+            contentInput.value = '';
+            cancelReply();
+            renderComments(posts[postIndex].comments);
+        }
+
+        // Initialize state on load
+        setTimeout(checkLoginState, 100);
     </script>
 </body>
 </html>
