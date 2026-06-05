@@ -906,13 +906,14 @@
 
         .modal-media {
             background: #F0F4F8;
-            min-height: 350px;
+            min-height: 300px;
             max-height: 60vh;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            padding: 20px;
         }
 
         .modal-info {
@@ -973,11 +974,13 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(10, 37, 64, 0.1);
+            aspect-ratio: 16 / 9;
+            background-color: #f8fafc;
         }
 
         .product-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
             object-fit: cover;
             transition: transform var(--transition-normal);
@@ -985,6 +988,31 @@
 
         .product-item:hover .product-image img {
             transform: scale(1.03);
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 91, 150, 0.2);
+        }
+
+        .product-cta-group {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .product-image img,
+        .brochure-card img,
+        .campaign-card img {
+            cursor: pointer;
         }
 
         /* ============================================
@@ -1378,8 +1406,8 @@
                 display: none;
             }
             .product-item, .product-item.reverse {
-                flex-direction: column;
-                gap: 32px;
+                flex-direction: column-reverse;
+                gap: 24px;
             }
             .form-row {
                 flex-direction: column;
@@ -1947,32 +1975,49 @@
                         <h2 class="section-title">워터펌프 제품 라인업</h2>
                         <p class="section-subtitle">다양한 산업군과 생활 환경에 맞춤형 수압을 제공하는 최고의 제품군입니다.</p>
                     </div>
-                    <div class="cards-grid">
-                        <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div class="card-img-wrapper">
-                                <img src="고효율%20다단%20원심펌프%20이미지.png" alt="고효율 다단 원심펌프" class="card-img">
+                    <div class="product-grid">
+                        <!-- Pump 1: 고효율 다단 원심펌프 -->
+                        <div class="product-item reverse">
+                            <div class="product-text">
+                                <h3>고효율 다단 원심펌프</h3>
+                                <p>안정적인 유량과 강력한 고압 송출을 보증하여 아파트 급수 및 공장 냉각수 순환에 최적화된 다단식 펌프입니다.</p>
+                                <div class="product-cta-group">
+                                    <a href="#inquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">견적 문의</a>
+                                    <a href="#" onclick="forceDownload('고효율%20다단%20원심펌프%20이미지.png', '고효율 다단 원심펌프 이미지.png'); event.preventDefault();" class="btn btn-outline-primary" style="padding: 10px 24px; font-size: 0.95rem;">카탈로그 다운로드</a>
+                                </div>
                             </div>
-                            <div style="padding: 24px;">
-                                <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">고효율 다단 원심펌프</h3>
-                                <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">안정적인 유량과 강력한 고압 송출을 보증하여 아파트 급수 및 공장 냉각수 순환에 최적화된 다단식 펌프입니다.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div class="card-img-wrapper">
-                                <img src="스마트%20인버터%20부스터%20펌프%20이미지.png" alt="스마트 인버터 부스터 펌프" class="card-img">
-                            </div>
-                            <div style="padding: 24px;">
-                                <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">스마트 인버터 부스터 펌프</h3>
-                                <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">사용량에 따라 실시간으로 주파수를 제어하여 전기 요금을 획기적으로 낮추고 이상 압력을 제어하는 스마트 부스터 시스템입니다.</p>
+                            <div class="product-image">
+                                <img src="고효율%20다단%20원심펌프%20이미지.png" alt="고효율 다단 원심펌프" onclick="openModal('고효율 다단 원심펌프', 'image', '고효율%20다단%20원심펌프%20이미지.png', '안정적인 유량과 강력한 고압 송출을 보증하여 아파트 급수 및 공장 냉각수 순환에 최적화된 다단식 펌프입니다.')" style="cursor: pointer;">
                             </div>
                         </div>
-                        <div class="card" style="text-align: left; padding: 0; overflow: hidden; border-radius: 20px;">
-                            <div class="card-img-wrapper">
-                                <img src="지능형%20심우물%20수중펌프%20이미지.png" alt="지능형 심우물 수중펌프" class="card-img">
+
+                        <!-- Pump 2: 스마트 인버터 부스터 펌프 -->
+                        <div class="product-item">
+                            <div class="product-text">
+                                <h3>스마트 인버터 부스터 펌프</h3>
+                                <p>사용량에 따라 실시간으로 주파수를 제어하여 전기 요금을 획기적으로 낮추고 이상 압력을 제어하는 스마트 부스터 시스템입니다.</p>
+                                <div class="product-cta-group">
+                                    <a href="#inquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">견적 문의</a>
+                                    <a href="#" onclick="forceDownload('스마트%20인버터%20부스터%20펌프%20이미지.png', '스마트 인버터 부스터 펌프 이미지.png'); event.preventDefault();" class="btn btn-outline-primary" style="padding: 10px 24px; font-size: 0.95rem;">카탈로그 다운로드</a>
+                                </div>
                             </div>
-                            <div style="padding: 24px;">
-                                <h3 style="font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-bottom: 12px;">지능형 심우물 수중펌프</h3>
-                                <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6;">깊은 대수층의 지하수를 끌어올리며 모터 과부하 및 이상 진동 감지용 IoT 단말이 결합된 친환경 펌프입니다.</p>
+                            <div class="product-image">
+                                <img src="스마트%20인버터%20부스터%20펌프%20이미지.png" alt="스마트 인버터 부스터 펌프" onclick="openModal('스마트 인버터 부스터 펌프', 'image', '스마트%20인버터%20부스터%20펌프%20이미지.png', '사용량에 따라 실시간으로 주파수를 제어하여 전기 요금을 획기적으로 낮추고 이상 압력을 제어하는 스마트 부스터 시스템입니다.')">
+                            </div>
+                        </div>
+
+                        <!-- Pump 3: 지능형 심우물 수중펌프 -->
+                        <div class="product-item reverse">
+                            <div class="product-text">
+                                <h3>지능형 심우물 수중펌프</h3>
+                                <p>깊은 대수층의 지하수를 끌어올리며 모터 과부하 및 이상 진동 감지용 IoT 단말이 결합된 친환경 펌프입니다.</p>
+                                <div class="product-cta-group">
+                                    <a href="#inquiry" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">견적 문의</a>
+                                    <a href="#" onclick="forceDownload('지능형%20심우물%20수중펌프%20이미지.png', '지능형 심우물 수중펌프 이미지.png'); event.preventDefault();" class="btn btn-outline-primary" style="padding: 10px 24px; font-size: 0.95rem;">카탈로그 다운로드</a>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <img src="지능형%20심우물%20수중펌프%20이미지.png" alt="지능형 심우물 수중펌프" onclick="openModal('지능형 심우물 수중펌프', 'image', '지능형%20심우물%20수중펌프%20이미지.png', '깊은 대수층의 지하수를 끌어올리며 모터 과부하 및 이상 진동 감지용 IoT 단말이 결합된 친환경 펌프입니다.')" style="cursor: pointer;">
                             </div>
                         </div>
                     </div>
@@ -2134,20 +2179,20 @@
                     </div>
                     <div class="brochure-grid">
                         <div class="brochure-card">
-                            <img src="Brochure 4.png" alt="브로슈어 4">
+                            <img src="Brochure 4.png" alt="브로슈어 4" onclick="openModal('기업 브로슈어 4', 'image', 'Brochure 4.png', '비에이텍 기업 브로슈어 상세 페이지 4')" style="cursor: pointer;">
                         </div>
                         <div class="brochure-card">
-                            <img src="Brochure 1.png" alt="브로슈어 1">
+                            <img src="Brochure 1.png" alt="브로슈어 1" onclick="openModal('기업 브로슈어 1', 'image', 'Brochure 1.png', '비에이텍 기업 브로슈어 상세 페이지 1')" style="cursor: pointer;">
                         </div>
                         <div class="brochure-card">
-                            <img src="Brochure 2.png" alt="브로슈어 2">
+                            <img src="Brochure 2.png" alt="브로슈어 2" onclick="openModal('기업 브로슈어 2', 'image', 'Brochure 2.png', '비에이텍 기업 브로슈어 상세 페이지 2')" style="cursor: pointer;">
                         </div>
                         <div class="brochure-card">
-                            <img src="Brochure 3.png" alt="브로슈어 3">
+                            <img src="Brochure 3.png" alt="브로슈어 3" onclick="openModal('기업 브로슈어 3', 'image', 'Brochure 3.png', '비에이텍 기업 브로슈어 상세 페이지 3')" style="cursor: pointer;">
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 40px;">
-                        <a href="#" class="btn btn-primary">기업 브로슈어 다운로드 (.pdf)</a>
+                        <a href="#" onclick="downloadAllBrochures(event)" class="btn btn-primary">기업 브로슈어 다운로드</a>
                     </div>
                 </div>
             </section>
@@ -2161,25 +2206,25 @@
                     </div>
                     <div class="campaign-grid">
                         <div class="campaign-card">
-                            <img src="BA1.png" alt="물 활용 캠페인 BA1">
+                            <img src="BA1.png" alt="물 활용 캠페인 BA1" onclick="openModal('물 활용 캠페인 - 왜?', 'image', 'BA1.png', '물 활용 캠페인 카드뉴스: 왜 물을 아껴야 할까요?')">
                             <div class="brochure-card-content">
                                 <h4>왜?</h4>
                             </div>
                         </div>
                         <div class="campaign-card">
-                            <img src="BA2.png" alt="물 활용 캠페인 BA2">
+                            <img src="BA2.png" alt="물 활용 캠페인 BA2" onclick="openModal('물 활용 캠페인 - 어떻게?', 'image', 'BA2.png', '물 활용 캠페인 카드뉴스: 어떻게 물을 아낄 수 있을까요?')">
                             <div class="brochure-card-content">
                                 <h4>어떻게?</h4>
                             </div>
                         </div>
                         <div class="campaign-card">
-                            <img src="BA3.png" alt="물 활용 캠페인 BA3">
+                            <img src="BA3.png" alt="물 활용 캠페인 BA3" onclick="openModal('물 활용 캠페인 - 누가?', 'image', 'BA3.png', '물 활용 캠페인 카드뉴스: 누가 물 절약을 실천해야 할까요?')">
                             <div class="brochure-card-content">
                                 <h4>누가?</h4>
                             </div>
                         </div>
                         <div class="campaign-card">
-                            <img src="BA4.png" alt="물 활용 캠페인 BA4">
+                            <img src="BA4.png" alt="물 활용 캠페인 BA4" onclick="openModal('물 활용 캠페인 - 함께해요', 'image', 'BA4.png', '물 활용 캠페인 카드뉴스: 다 함께 물 절약을 실천해 봐요!')">
                             <div class="brochure-card-content">
                                 <h4>함께해요</h4>
                             </div>
@@ -2604,13 +2649,25 @@
                     modalMedia.innerHTML = `<video width="100%" height="400" controls autoplay><source src="${mediaSrc}" type="video/mp4"><source src="${decodeURIComponent(mediaSrc)}"></video>`;
                 }
             } else if (category === 'report' && mediaSrc) {
-                modalMedia.innerHTML = `<iframe width="100%" height="400" src="${mediaSrc}" frameborder="0" style="background:#fff;"></iframe>`;
+                modalMedia.innerHTML = `<div id="reportContainer" style="width:100%; height:400px; overflow-y:auto; background:#fff; padding:30px; text-align:left; font-size:1.05rem; line-height:1.8; color:#333; font-family:var(--font-main); white-space:pre-wrap; border-top-left-radius:24px; border-top-right-radius:24px;">보고서를 불러오는 중...</div>`;
+                fetch(mediaSrc)
+                    .then(response => response.text())
+                    .then(text => {
+                        document.getElementById('reportContainer').textContent = text;
+                    })
+                    .catch(error => {
+                        document.getElementById('reportContainer').textContent = "보고서를 불러올 수 없습니다.";
+                    });
             } else if (mediaSrc) {
-                modalMedia.innerHTML = `<img src="${mediaSrc}" alt="${title}" style="width:100%; height:100%; object-fit:contain; background:#f0f4f8;">`;
+                modalMedia.innerHTML = `<img src="${mediaSrc}" alt="${title}" style="max-width:100%; max-height:60vh; object-fit:contain; border-radius:8px;">`;
             } else {
                 let icon = '📄';
-                if(category === 'audio') icon = '🎵';
-                modalMedia.innerHTML = `<div style="height:350px; width:100%; display:flex; align-items:center; justify-content:center; background:#f0f4f8; font-size:6rem; color:var(--color-primary);">${icon}</div>`;
+                let extraProps = '';
+                if(category === 'audio') {
+                    icon = '🎵';
+                    extraProps = 'onclick="togglePlay()" style="cursor: pointer;" title="배경음악 재생/일시정지"';
+                }
+                modalMedia.innerHTML = `<div ${extraProps} style="height:350px; width:100%; display:flex; align-items:center; justify-content:center; background:#f0f4f8; font-size:6rem; color:var(--color-primary);">${icon}</div>`;
             }
 
             modal.style.display = 'flex';
@@ -3265,6 +3322,44 @@
             contentInput.value = '';
             cancelReply();
             renderComments(posts[postIndex].comments);
+        }
+
+        function forceDownload(url, filename) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(blobUrl);
+                })
+                .catch(e => {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+        }
+
+        function downloadAllBrochures(e) {
+            e.preventDefault();
+            const files = [
+                'Brochure 1.png',
+                'Brochure 2.png',
+                'Brochure 3.png',
+                'Brochure 4.png'
+            ];
+            files.forEach((file, index) => {
+                setTimeout(() => {
+                    forceDownload(file, file);
+                }, index * 250);
+            });
         }
 
         // Initialize state on load
