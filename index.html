@@ -3716,15 +3716,17 @@
             // Scroll Spy
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 200)) {
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top + window.scrollY;
+                if (window.scrollY >= (sectionTop - 250)) {
                     current = section.getAttribute('id');
                 }
             });
 
             gnbLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') && link.getAttribute('href').includes(current) && current !== '') {
+                const href = link.getAttribute('href');
+                if (href && href === '#' + current && current !== '') {
                     link.classList.add('active');
                     const parentItem = link.closest('.gnb-item');
                     if (parentItem) {
