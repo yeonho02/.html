@@ -1796,7 +1796,7 @@
                 <div class="gnb-item" id="employee-menu" style="display: none;">
                     <span class="gnb-link" style="color: var(--color-primary);">직원 전용</span>
                     <div class="dropdown-menu" style="min-width: 220px;">
-                        <a href="#employee-zone" style="font-size: 0.82rem; white-space: nowrap;">사내 인트라넷 & 캘린더</a>
+                        <a href="#intranet" style="font-size: 0.82rem; white-space: nowrap;">사내 인트라넷 & 캘린더</a>
                         <a href="#notebooklm-guide" style="font-size: 0.82rem; white-space: nowrap;">NotebookLM 활용 가이드</a>
                         <a href="#chatbot-guide" style="font-size: 0.82rem; white-space: nowrap;">사내 업무용 챗봇 가이드</a>
                     </div>
@@ -2586,6 +2586,7 @@
                             <div class="board-header-right">
                                 <div class="user-profile-summary" id="userProfileSummary"></div>
                                 <button onclick="showProfileEdit()" class="profile-btn">내 프로필</button>
+                                <button onclick="openMessageModal()" class="profile-btn" style="background-color: var(--color-secondary); border-color: var(--color-secondary); color: white; margin-left: 8px; position: relative;">쪽지함 💌<span id="unread-badge" style="display: none; position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; font-size: 0.7rem; padding: 2px 6px; font-weight: bold;">0</span></button>
                                 <button onclick="handleLogout()" class="logout-btn">로그아웃</button>
                             </div>
                         </div>
@@ -2682,6 +2683,37 @@
                             </div>
                         </div>
 
+                        <!-- Message Modal -->
+                        <div id="messageModal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000;">
+                            <div class="modal-content" style="background: white; width: 100%; max-width: 600px; border-radius: 12px; padding: 24px; position: relative; height: 85vh; display: flex; flex-direction: column;">
+                                <button onclick="closeMessageModal()" class="close-modal" style="position: absolute; right: 20px; top: 20px; font-size: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+                                <h3 style="margin-top: 0; margin-bottom: 16px; color: var(--color-primary);">💌 쪽지함 (비공개 채팅)</h3>
+                                
+                                <div style="margin-bottom: 16px;">
+                                    <label for="chat-partner-select" style="font-weight: bold; font-size: 0.9rem;">대화 상대 선택:</label>
+                                    <select id="chat-partner-select" class="form-control" style="width: 100%; padding: 8px; border-radius: 4px; margin-top: 4px; border: 1px solid #ccc;" onchange="renderChatMessages()">
+                                        <!-- Options will be injected here -->
+                                    </select>
+                                </div>
+
+                                <div id="message-list-container" style="flex: 1; overflow-y: auto; padding: 16px; background: #f8f9fa; border-radius: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #eee;">
+                                    <!-- Messages will be injected here -->
+                                </div>
+
+                                <div class="message-form-container" style="background: white; padding: 0;">
+                                    <form onsubmit="handleMessageSubmit(event)" class="inquiry-form" style="display: flex; flex-direction: column; gap: 10px;">
+                                        <textarea id="message-input" rows="2" placeholder="메시지를 입력하세요..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; resize: none;"></textarea>
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <label id="anonymous-checkbox-container" style="font-size: 0.85rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                                <input type="checkbox" id="chat-anonymous"> 익명으로 보내기
+                                            </label>
+                                            <button type="submit" id="chat-submit-btn" class="btn btn-primary" style="padding: 6px 20px; border-radius: 20px;">전송</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Calendar Section -->
                         <div id="calendar-section" style="margin-top: 60px; padding: 24px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -2762,7 +2794,7 @@
     </footer>
 
     <!-- Scroll To Top Button -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn" title="위로 가기" style="display: none; position: fixed; bottom: 40px; right: 40px; z-index: 99; font-size: 1.5rem; border: none; outline: none; background-color: var(--color-primary); color: white; cursor: pointer; padding: 15px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 60px; height: 60px; justify-content: center; align-items: center; transition: background-color 0.3s, transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">⬆️</button>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn" title="위로 가기" style="display: none; position: fixed; bottom: 120px; right: 40px; z-index: 99; font-size: 1.5rem; border: none; outline: none; background-color: var(--color-primary); color: white; cursor: pointer; padding: 15px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 60px; height: 60px; justify-content: center; align-items: center; transition: background-color 0.3s, transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='translateY(0)';">⬆️</button>
 
     <script>
         // ============================================
@@ -3742,6 +3774,345 @@
             initCharts();
             checkLoginState();
         }, 100);
+        // ============================================
+        // CHAT (MESSAGING) SYSTEM
+        // ============================================
+        function openMessageModal() {
+            const currentUser = localStorage.getItem('intranet_user');
+            if(!currentUser) {
+                alert('로그인이 필요합니다.');
+                return;
+            }
+            document.getElementById('messageModal').style.display = 'flex';
+            populateChatPartners(currentUser);
+        }
+
+        function closeMessageModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        function getChatMessages() {
+            const msgs = localStorage.getItem('batech_chats');
+            return msgs ? JSON.parse(msgs) : [];
+        }
+
+        function saveChatMessages(msgs) {
+            localStorage.setItem('batech_chats', JSON.stringify(msgs));
+        }
+
+        function updateUnreadBadge() {
+            const currentUser = localStorage.getItem('intranet_user');
+            if(!currentUser) return;
+            const msgs = getChatMessages();
+            let unreadCount = 0;
+            msgs.forEach(m => {
+                if (!m.isRead) {
+                    if (m.receiver === currentUser) {
+                        unreadCount++;
+                    } else if (m.receiver === 'anon_' + currentUser) {
+                        unreadCount++;
+                    }
+                }
+            });
+
+            const badge = document.getElementById('unread-badge');
+            if(badge) {
+                if(unreadCount > 0) {
+                    badge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+                    badge.style.display = 'inline-block';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+        }
+
+        // 초기 로드 시 배지 업데이트
+        setTimeout(updateUnreadBadge, 500);
+
+        function populateChatPartners(currentUser) {
+            const msgs = getChatMessages();
+            const isAdmin = currentUser === 'admin';
+            const ALL_USERS = ['admin', 'staff01', 'staff02', 'staff03', 'staff04'];
+            let partnerMap = new Map();
+
+            if (!isAdmin) {
+                // 직원(Staff)은 본인을 제외한 모두에게 선톡 가능 (일반 방)
+                ALL_USERS.forEach(u => {
+                    if (u !== currentUser) partnerMap.set(u, u === 'admin' ? '관리자 (admin)' : u);
+                });
+                // 직원이 만든 '나의 익명 문의' 방 추가
+                msgs.forEach(m => {
+                    if (m.sender === currentUser && m.isAnonymous) {
+                        const anonKey = m.receiver + '_anon';
+                        if (!partnerMap.has(anonKey)) {
+                            partnerMap.set(anonKey, (m.receiver === 'admin' ? '관리자' : m.receiver) + ' (나의 익명 문의)');
+                        }
+                    }
+                });
+            }
+
+            // 나에게 온 익명 메시지 발송자 & 관리자용 일반 메시지 발송자 수집
+            let anonCounter = 1;
+            let anonNameMap = {};
+            msgs.forEach(m => {
+                if (m.receiver === currentUser) {
+                    if (m.isAnonymous) {
+                        const anonKey = 'anon_' + m.sender;
+                        if (!anonNameMap[anonKey]) {
+                            anonNameMap[anonKey] = '익명 사용자 ' + anonCounter++;
+                        }
+                        partnerMap.set(anonKey, anonNameMap[anonKey]);
+                    } else if (isAdmin) {
+                        partnerMap.set(m.sender, m.sender);
+                    }
+                }
+            });
+
+            const selectEl = document.getElementById('chat-partner-select');
+            const prevSelected = selectEl.value;
+            selectEl.innerHTML = '';
+            
+            if (partnerMap.size === 0) {
+                selectEl.innerHTML = '<option value="">대화 상대가 없습니다</option>';
+            } else {
+                partnerMap.forEach((name, id) => {
+                    const opt = document.createElement('option');
+                    opt.value = id;
+                    opt.textContent = name;
+                    
+                    // 안 읽은 메시지 수 표시 (옵션 텍스트에)
+                    let unreadInThread = 0;
+                    if (!isAdmin && id.endsWith('_anon')) {
+                        // Staff의 익명방: 상대방이 'anon_currentUser'에게 보낸 안읽은 메시지
+                        const realReceiver = id.replace('_anon', '');
+                        unreadInThread = msgs.filter(m => !m.isRead && m.sender === realReceiver && m.receiver === 'anon_' + currentUser).length;
+                    } else if (!isAdmin) {
+                        // Staff의 일반방: 상대방이 'currentUser'에게 보낸 안읽은 메시지
+                        unreadInThread = msgs.filter(m => !m.isRead && m.sender === id && m.receiver === currentUser && !m.isAnonymous).length;
+                    } else {
+                        // Admin의 방
+                        if (id.startsWith('anon_')) {
+                            const realSender = id.replace('anon_', '');
+                            unreadInThread = msgs.filter(m => !m.isRead && m.sender === realSender && m.receiver === currentUser && m.isAnonymous).length;
+                        } else {
+                            unreadInThread = msgs.filter(m => !m.isRead && m.sender === id && m.receiver === currentUser && !m.isAnonymous).length;
+                        }
+                    }
+                    if (unreadInThread > 0) {
+                        opt.textContent += ` 🔴(${unreadInThread})`;
+                    }
+                    
+                    selectEl.appendChild(opt);
+                });
+                if (partnerMap.has(prevSelected)) {
+                    selectEl.value = prevSelected;
+                }
+            }
+
+            if (isAdmin) {
+                document.getElementById('anonymous-checkbox-container').style.display = 'none';
+                if (partnerMap.size === 0) {
+                    document.getElementById('message-input').disabled = true;
+                    document.getElementById('chat-submit-btn').disabled = true;
+                } else {
+                    document.getElementById('message-input').disabled = false;
+                    document.getElementById('chat-submit-btn').disabled = false;
+                }
+            } else {
+                document.getElementById('message-input').disabled = false;
+                document.getElementById('chat-submit-btn').disabled = false;
+                
+                // 만약 현재 선택된 방이 익명방이면 체크박스를 숨기고 자동 적용되게 UI 처리
+                if (selectEl.value && selectEl.value.endsWith('_anon')) {
+                    document.getElementById('anonymous-checkbox-container').style.display = 'none';
+                } else {
+                    document.getElementById('anonymous-checkbox-container').style.display = 'flex';
+                }
+            }
+
+            renderChatMessages();
+        }
+
+        function renderChatMessages() {
+            const selectEl = document.getElementById('chat-partner-select');
+            const partner = selectEl.value;
+            const container = document.getElementById('message-list-container');
+            const currentUser = localStorage.getItem('intranet_user');
+            const isAdmin = currentUser === 'admin';
+            
+            if (!partner) {
+                container.innerHTML = '<div style="text-align: center; color: #888; padding: 20px;">대화 상대를 선택해주세요.</div>';
+                document.getElementById('message-input').disabled = true;
+                document.getElementById('chat-submit-btn').disabled = true;
+                return;
+            } else {
+                document.getElementById('message-input').disabled = false;
+                document.getElementById('chat-submit-btn').disabled = false;
+                
+                if (!isAdmin) {
+                    if (partner.endsWith('_anon')) {
+                        document.getElementById('anonymous-checkbox-container').style.display = 'none';
+                    } else {
+                        document.getElementById('anonymous-checkbox-container').style.display = 'flex';
+                    }
+                }
+            }
+
+            let msgs = getChatMessages();
+            let threadMsgs = [];
+            let isModified = false;
+
+            if (!isAdmin) {
+                if (partner.endsWith('_anon')) {
+                    // 직원의 익명방 (Staff View)
+                    const realPartner = partner.replace('_anon', '');
+                    threadMsgs = msgs.filter(m => {
+                        const inThread = (m.sender === currentUser && m.receiver === realPartner && m.isAnonymous) || 
+                                         (m.sender === realPartner && m.receiver === 'anon_' + currentUser);
+                        if (inThread && !m.isRead && m.sender !== currentUser) {
+                            m.isRead = true; isModified = true;
+                        }
+                        return inThread;
+                    });
+                } else {
+                    // 직원의 일반방 (Staff View)
+                    threadMsgs = msgs.filter(m => {
+                        const inThread = (m.sender === currentUser && m.receiver === partner && !m.isAnonymous) || 
+                                         (m.sender === partner && m.receiver === currentUser && !m.isAnonymous);
+                        if (inThread && !m.isRead && m.sender !== currentUser) {
+                            m.isRead = true; isModified = true;
+                        }
+                        return inThread;
+                    });
+                }
+            } else {
+                // 관리자의 방 (Admin View)
+                if (partner.startsWith('anon_')) {
+                    const realSender = partner.replace('anon_', '');
+                    threadMsgs = msgs.filter(m => {
+                        const inThread = (m.sender === realSender && m.receiver === currentUser && m.isAnonymous) ||
+                                         (m.sender === currentUser && m.receiver === partner);
+                        if (inThread && !m.isRead && m.sender !== currentUser) {
+                            m.isRead = true; isModified = true;
+                        }
+                        return inThread;
+                    });
+                } else {
+                    threadMsgs = msgs.filter(m => {
+                        const inThread = (m.sender === partner && m.receiver === currentUser && !m.isAnonymous) ||
+                                         (m.sender === currentUser && m.receiver === partner);
+                        if (inThread && !m.isRead && m.sender !== currentUser) {
+                            m.isRead = true; isModified = true;
+                        }
+                        return inThread;
+                    });
+                }
+            }
+
+            if (isModified) {
+                saveChatMessages(msgs);
+                updateUnreadBadge();
+                // We don't re-render dropdown immediately to avoid focus loss, but title is fine.
+                // Wait, if option text had 🔴, we should clear it visually:
+                Array.from(selectEl.options).forEach(opt => {
+                    if(opt.value === partner && opt.textContent.includes('🔴')) {
+                        opt.textContent = opt.textContent.replace(/\s*🔴\(\d+\)/, '');
+                    }
+                });
+            }
+
+            if (threadMsgs.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: #888; padding: 20px; font-size: 0.9rem;">대화 내역이 없습니다. 첫 메시지를 보내보세요!</div>';
+                return;
+            }
+
+            let html = '';
+            threadMsgs.forEach(msg => {
+                const isMe = (msg.sender === currentUser);
+                const dateStr = new Date(msg.timestamp).toLocaleString([], {month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'});
+                
+                let bubbleAlign = isMe ? 'flex-end' : 'flex-start';
+                let bubbleBg = isMe ? 'var(--color-primary)' : '#fff';
+                let bubbleColor = isMe ? 'white' : '#333';
+                let senderName = isMe ? '나' : (msg.isAnonymous ? selectEl.options[selectEl.selectedIndex].text.replace(/\s*🔴\(\d+\)/, '') : msg.sender);
+                
+                if (isMe && msg.isAnonymous) {
+                    senderName = '나 (익명으로 보냄)';
+                }
+
+                html += `
+                    <div style="display: flex; flex-direction: column; align-items: ${bubbleAlign}; width: 100%;">
+                        <span style="font-size: 0.75rem; color: #888; margin-bottom: 4px; padding: 0 4px;">${senderName}</span>
+                        <div style="background: ${bubbleBg}; color: ${bubbleColor}; padding: 8px 12px; border-radius: 12px; max-width: 80%; white-space: pre-wrap; font-size: 0.85rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: ${isMe ? 'none' : '1px solid #e1e8ed'}; line-height: 1.4;">
+                            ${msg.text}
+                        </div>
+                        <span style="font-size: 0.7rem; color: #aaa; margin-top: 4px; padding: 0 4px;">${dateStr}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 10);
+        }
+
+        function handleMessageSubmit(e) {
+            e.preventDefault();
+            const textEl = document.getElementById('message-input');
+            const text = textEl.value.trim();
+            if (!text) return;
+
+            let partner = document.getElementById('chat-partner-select').value;
+            const currentUser = localStorage.getItem('intranet_user');
+            const isAdmin = currentUser === 'admin';
+            const anonCheckbox = document.getElementById('chat-anonymous');
+            
+            if (!partner) return;
+
+            let isAnon = false;
+            let realPartner = partner;
+
+            if (!isAdmin) {
+                // 만약 현재 룸이 익명 룸이면 자동 익명
+                if (partner.endsWith('_anon')) {
+                    isAnon = true;
+                    realPartner = partner.replace('_anon', '');
+                } else if (anonCheckbox && anonCheckbox.checked) {
+                    isAnon = true;
+                }
+            } else {
+                // Admin replies
+                realPartner = partner; // e.g., 'anon_staff01' or 'staff01'
+            }
+
+            const msgs = getChatMessages();
+            msgs.push({
+                id: 'msg_' + Date.now(),
+                sender: currentUser,
+                receiver: realPartner,
+                isAnonymous: isAnon,
+                isRead: false,
+                text: text,
+                timestamp: Date.now()
+            });
+
+            saveChatMessages(msgs);
+            textEl.value = '';
+            
+            if(anonCheckbox) anonCheckbox.checked = false;
+
+            // 만약 내가 처음으로 익명 메시지를 보냈다면, 
+            // dropdown을 다시 그리고 _anon 방으로 즉시 스위칭해야 합니다.
+            if (!isAdmin && isAnon && !partner.endsWith('_anon')) {
+                populateChatPartners(currentUser);
+                document.getElementById('chat-partner-select').value = realPartner + '_anon';
+                renderChatMessages();
+            } else {
+                populateChatPartners(currentUser);
+            }
+        }
+
     </script>
 </body>
 </html>
